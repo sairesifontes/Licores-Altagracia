@@ -1,0 +1,304 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@1,300&family=Source+Code+Pro:wght@600&display=swap');
+
+/* color fondo #1B1F3B 
+    color frente #FFECCC
+    amarillo #E8C547
+*/
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul{
+    list-style-type: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+.wrapper{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    background-color: #ddbd48;
+}
+
+aside{
+    padding: 2rem;
+    padding-right: 0;
+    color: white;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.logo-img{
+    margin-left: 50px;
+    margin-top: 50px;
+}
+
+.logo-titulo{
+    font-weight: 400;
+    font-size: 2.5rem;
+    font-family: 'Bitter', serif;
+    font-family: 'Source Code Pro', monospace;
+    color: #1B1F3B;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.menu{
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.btn-menu{
+    background-color: transparent;
+    color: white;
+    border: 0;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    font-weight: 600;
+    padding: 1rem;
+    width: 100%;
+}
+
+.btn-menu.active{
+    background-color: #F4F1DE;
+    color: #1B1F3B;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    padding: 1.8rem;
+    position: relative;
+}
+
+
+.btn-menu.active::before{
+    content: '';
+    position: absolute;
+    width: 1rem;
+    height: 2rem;
+    bottom: 100%;
+    right: 0;
+    background-color: transparent;
+    border-bottom-right-radius: .5rem;
+    box-shadow: 0 1rem 0 #F4F1DE;
+}
+
+.btn-menu.active::after{
+    content: '';
+    position: absolute;
+    width: 1rem;
+    height: 2rem;
+    top: 100%;
+    right: 0;
+    background-color: transparent;
+    border-top-right-radius: .5rem;
+    box-shadow: 0 -1rem 0 #F4F1DE;
+}
+
+.bi-hand-index-thumb-fill,
+.bi-hand-index-thumb{
+    transform: rotateZ(90deg);
+}
+
+.container-footer, .nombre-proyecto{
+    color: #848bc2;
+    font-size: 0.98rem;
+}
+
+.boton-carrito{
+    margin-top: 4rem;
+}
+
+.numero-carrito{
+    background-color: white;
+    padding: .15rem .25rem;
+    border-radius: .25rem;
+    color: #ddbd48;
+    font-size: 1.3rem;
+}
+
+
+main{
+    background-color: #F4F1DE;
+    margin: 1rem;
+    margin-left: 0;
+    border-radius: 2rem;
+    padding: 3rem;
+}
+
+.titulo-principal{
+    color: #ddbd48;
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    padding: 1rem;
+}
+
+.container-titulo-busqueda{
+    /* background-color: aqua; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+input{
+    width: 450px;
+    height: 50px;
+    border-radius: 20px;
+    padding: 1rem;
+    border: 0;
+}
+
+.container-licores{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+}
+
+.licor-imagen{
+    width: 210px;
+    height: 250px;
+}
+
+.licor-detalles{
+    color: #1B1F3B;
+    padding: .5rem;
+    border-radius: 1rem;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.licor-titulo {
+    font-size: 1.5rem;
+    margin: 20px;
+}
+
+.licor-precio{
+    font-size: 1.5rem;
+}
+
+.licores{
+    padding: 40px;
+}
+
+.licor-agregar{
+    width: 200px;
+    border: 0;
+    background-color: rgb(222, 230, 241);
+    padding: 1rem;
+    border-radius: 2rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color .2s, color .2s;
+    margin-bottom: 20px;
+}
+
+.licor-agregar:hover{
+    background-color: rgb(222, 230, 241);
+    color: aliceblue;
+}
+
+/* carrito */
+
+.carrito-licores{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.carrito-licor{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(233, 227, 204);
+    padding: 30px;
+    border-radius: 1rem;
+    margin: 20px;
+}
+
+.carrito-licor-img{
+    width: 4rem;
+}
+
+.carrito-licor-cantidad,
+.carrito-licor-titulo,
+.carrito-licor-precio,
+.carrito-licor-subtotal{
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+.carrito-licor-eliminar{
+    border: 0;
+    background-color: transparent;
+    color: red;
+    font-size: 1.8rem;
+}
+
+.carrito-accion{
+    display: flex;
+    justify-content: space-between;
+}
+
+.carrito-accion-vaciar{
+    border: 0;
+    background-color: #ddbd48;
+    padding: 1.8rem;
+    border-radius: 4rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.carrito-comprar{
+    border: 0;
+    background-color: #ddbd48;
+    padding: 1.8rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-size: 1.2rem;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+
+.carrito-comprado, .carrito-vacio{
+    background-color: #ddbd48;
+    text-align: center;
+    margin: 20rem;
+    padding: 5rem;
+    color: black;
+    font-size: 1.8rem;
+}
+
+.acciones-derecha{
+    display: flex;
+}
+
+.carrito-acciones-total{
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: rgb(233, 227, 204);
+    text-transform: uppercase;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    gap: 1rem;
+}
+
+.disabled{
+    display: none;
+}
