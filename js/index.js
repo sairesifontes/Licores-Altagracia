@@ -1,11 +1,18 @@
+
+//array de productos en cuestion
+
 let licores = []
 
+// aplicando fetch
 fetch("./js/licores.json")
     .then(response => response.json())
     .then(data => {
         licores = data    
         cargarLicoresHTML(licores)
-    })
+})
+
+
+
 
 const contenedorLicores = document.querySelector(".container-licores")
 const botonesCategoria = document.querySelectorAll(".boton-categoria")
@@ -15,7 +22,7 @@ const buscarPorNombre = document.querySelector("#buscar")
 
 
 
-
+// carga las card del HTML de cada producto
 
 function cargarLicoresHTML(categoriaElegida) {
 
@@ -30,7 +37,7 @@ function cargarLicoresHTML(categoriaElegida) {
             <div class="licor-detalles">
                 <h3 class="licor-titulo">${licor.nombre}</h3>
                 <p class="licor-precio">$ ${licor.precio}</p>
-                <button class="licor-agregar" id="${licor.codigo}">Agregar</button>
+                <button class="licor-agregar" id="${licor.codigo}">Agregar al carrito</button>
             </div>    
         `;
         contenedorLicores.append(div)
@@ -39,6 +46,8 @@ function cargarLicoresHTML(categoriaElegida) {
 }
 
 
+
+// para actualizar los productos con respecto a la categoria
 
 botonesCategoria.forEach(boton => {
     boton.addEventListener("click", (e) => {
@@ -56,6 +65,8 @@ botonesCategoria.forEach(boton => {
 })
 
 
+// funcion para buscar en el input por nombre 
+
 buscarPorNombre.addEventListener("input", () => {
     let buscar = buscarPorNombre.value.trim().toLowerCase();
     let licoresRestantes = licores.filter((licor) => {
@@ -65,6 +76,8 @@ buscarPorNombre.addEventListener("input", () => {
 });
 
 
+
+// agregar al carrito
 
 function actBotonAgregar() {
 
@@ -80,6 +93,10 @@ let licoresEnCarrito = []
 
 let licoresEnCarritoLS = localStorage.getItem("mi-carrito")
 
+
+
+// actualiza el numero de licores en el carrito
+
 if(licoresEnCarritoLS){
     licoresEnCarrito = JSON.parse(licoresEnCarritoLS)
     actualizaNroCarrito()
@@ -88,6 +105,7 @@ if(licoresEnCarritoLS){
 }
 
 
+// agrega al carrito
 
 function agregarAlCarrito(e){
 
@@ -127,6 +145,8 @@ function agregarAlCarrito(e){
 }
 
 
+
+// actualiza el numero del carrito
 function actualizaNroCarrito(){
     let nro = licoresEnCarrito.reduce((acc,licor) => acc + licor.cantidad, 0)
     nroCantidadCarrito.innerText = nro

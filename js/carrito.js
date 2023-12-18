@@ -1,7 +1,11 @@
+// recupera los licores del carrito en el localStorage
+
 let licoresEnCarrito = localStorage.getItem("mi-carrito") 
 licoresEnCarrito = JSON.parse(localStorage.getItem("mi-carrito"))
 
 
+
+// DOM
 const carritoLicores = document.querySelector("#carrito-licores")
 const carritoVacio = document.querySelector("#carrito-vacio")
 const carritoComprado = document.querySelector("#carrito-comprado")
@@ -11,6 +15,10 @@ const botonVaciar = document.querySelector("#carrito-accion-vaciar")
 const botonComprar = document.querySelector("#carrito-comprar")
 const totalCarrito = document.querySelector("#total-carrito")
 
+
+
+
+// funcion para cargar los licores en el carrito de compras
 
 function cargarLicoresAlCarrito(){
 
@@ -72,6 +80,10 @@ function cargarLicoresAlCarrito(){
 cargarLicoresAlCarrito()
 
 
+
+// actualiza los botones eliminar del carrito
+
+
 function actBotonEliminar() {
     botonesEliminar = document.querySelectorAll(".carrito-licor-eliminar")
 
@@ -79,6 +91,10 @@ function actBotonEliminar() {
         boton.addEventListener("click", eliminarDelCarrito)
     })
 }
+
+
+
+// elimina licores del carrito
 
 function eliminarDelCarrito(e){
 
@@ -115,6 +131,9 @@ function eliminarDelCarrito(e){
 botonVaciar.addEventListener("click", vaciarElCarrito)
 
 
+
+// vacia los licores del carrito 
+
 function vaciarElCarrito(){
 
     Swal.fire({
@@ -141,6 +160,9 @@ function vaciarElCarrito(){
 
 }
 
+
+// calcula el total de los licores en el carrito
+
 function actualizarTotal(){
 
     const totalCalculado = licoresEnCarrito.reduce((acc, licor) => acc + (licor.precio * licor.cantidad), 0)
@@ -148,6 +170,9 @@ function actualizarTotal(){
 }
 
 botonComprar.addEventListener("click", comprarCarrito)
+
+
+// boton para comprar el carrito
 
 function comprarCarrito(){
     
