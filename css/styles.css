@@ -5,7 +5,6 @@
     amarillo #E8C547
 */
 
-
 *{
     margin: 0;
     padding: 0;
@@ -20,144 +19,101 @@ a{
     text-decoration: none;
 }
 
-.wrapper{
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-    background-color: #ddbd48;
+body{
+    width: auto;
 }
 
-aside{
-    padding: 2rem;
-    padding-right: 0;
-    color: white;
-    position: sticky;
-    top: 0;
-    height: 100vh;
+.container-nav{
+    margin: 0;
+    background-color: #ddbd48;
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    padding: 1rem;
+}
+
+.navbar{
+    display: flex;
     justify-content: space-between;
 }
 
-.logo-img{
-    margin-left: 50px;
-    margin-top: 50px;
-}
-
-.logo-titulo{
-    font-weight: 400;
-    font-size: 2.5rem;
-    font-family: 'Bitter', serif;
-    font-family: 'Source Code Pro', monospace;
-    color: #1B1F3B;
-    font-weight: bold;
-    margin-top: 20px;
-}
-
-.menu{
+.navbar-nav{
     display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
+    align-items: center;
 }
+
+.logo-img{
+    width: 250px;
+    height: 100px;
+    margin-right: 200px;
+}
+
 
 .btn-menu{
     background-color: transparent;
     color: white;
     border: 0;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 0.2rem;
     font-weight: 600;
     padding: 1rem;
-    width: 100%;
+    margin-right: 20px;
 }
 
 .btn-menu.active{
-    background-color: #F4F1DE;
     color: #1B1F3B;
-    border-top-left-radius: 1rem;
-    border-bottom-left-radius: 1rem;
-    padding: 1.8rem;
-    position: relative;
+    padding: 1.5rem;
 }
 
-
-.btn-menu.active::before{
-    content: '';
-    position: absolute;
-    width: 1rem;
-    height: 2rem;
-    bottom: 100%;
-    right: 0;
-    background-color: transparent;
-    border-bottom-right-radius: .5rem;
-    box-shadow: 0 1rem 0 #F4F1DE;
-}
-
-.btn-menu.active::after{
-    content: '';
-    position: absolute;
-    width: 1rem;
-    height: 2rem;
-    top: 100%;
-    right: 0;
-    background-color: transparent;
-    border-top-right-radius: .5rem;
-    box-shadow: 0 -1rem 0 #F4F1DE;
-}
-
-.bi-hand-index-thumb-fill,
-.bi-hand-index-thumb{
-    transform: rotateZ(90deg);
-}
-
-.container-footer, .nombre-proyecto{
-    color: #848bc2;
-    font-size: 0.98rem;
-}
-
-.boton-carrito{
-    margin-top: 4rem;
-}
 
 .numero-carrito{
-    background-color: white;
     padding: .15rem .25rem;
     border-radius: .25rem;
-    color: #ddbd48;
-    font-size: 1.3rem;
+    color: #000000;
+    font-size: 1.2rem;
+    margin-right: 20px;
 }
 
-
-main{
-    background-color: #F4F1DE;
-    margin: 1rem;
-    margin-left: 0;
-    border-radius: 2rem;
-    padding: 3rem;
-}
-
-.titulo-principal{
-    color: #ddbd48;
-    font-size: 2.2rem;
-    margin-bottom: 20px;
-    padding: 1rem;
-}
-
-.container-titulo-busqueda{
-    /* background-color: aqua; */
+.buscar-licor{
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    width: 250px;
+    height: 30px;
+    margin-top: -20px;
 }
 
 input{
-    width: 450px;
-    height: 50px;
-    border-radius: 20px;
-    padding: 1rem;
+    background-color:rgb(250, 246, 213);
+    width: 100%;
+    height: 10px;
+    border-radius: 15px;
+    padding: 1.2rem;
     border: 0;
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
+
+
+.titulo{
+    text-align: center;
+    font-weight: 500;
+    font-size: 4.5rem;
+    margin-top: 20px;
+    margin-bottom: 80px;
+    font-family: 'Bitter', serif;
+    font-family: 'Source Code Pro', monospace;
+    font-weight: bold;
+}
+
+main{
+    background-color: #F4F1DE;
+    margin: 20px;
+    border-radius: 2rem;
+    padding: 4rem;
 }
 
 .container-licores{
@@ -171,6 +127,11 @@ input{
 
 .licor-imagen{
     width: 210px;
+    height: 250px;
+}
+
+.licor-imagen:hover{
+    width: 300px;
     height: 250px;
 }
 
@@ -198,7 +159,7 @@ input{
 .licor-agregar{
     width: 200px;
     border: 0;
-    background-color: rgb(222, 230, 241);
+    background-color: rgb(224, 179, 15);
     padding: 1rem;
     border-radius: 2rem;
     text-transform: uppercase;
@@ -208,11 +169,20 @@ input{
 }
 
 .licor-agregar:hover{
-    background-color: rgb(222, 230, 241);
-    color: aliceblue;
+    background-color:  rgb(241, 201, 56);
+    color: rgb(255, 255, 255);
 }
 
 /* carrito */
+
+.boton-volver-inicio{
+    color: #000000;
+}
+
+.container-nav-carrito{
+    display: flex;
+    align-items: center;
+}
 
 .carrito-licores{
     display: flex;
@@ -301,4 +271,141 @@ input{
 
 .disabled{
     display: none;
+}
+
+
+footer{
+    background-color: #ddbd48;
+    margin-top: 20px;
+    margin-bottom: 2px;
+    text-align: center;
+    height: auto;
+}
+
+.container-footer, .nombre-proyecto{
+    color: rgb(238, 223, 157);
+    font-size: 2rem;
+}
+
+.img-ws {
+    position: fixed;
+    width: 80px;
+    height: 60px;
+    line-height: 55px;
+    bottom: 30px;
+    right: 30px;
+    z-index: 5;
+}
+
+
+
+/************* mobile ******************/
+
+
+@media screen and (max-width: 990px) {
+    
+    body{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .logo-img{
+        width: 120px;
+        height: 60px;
+        margin-left: 0px;
+    }
+
+    .menu{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .buscar-licor{
+        margin-left: 120px;
+        margin-top: 10px;
+    }
+
+    .titulo{
+        font-size: 2.5rem;
+        margin-left: -20px;
+    }
+
+    .container-licores{
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .licor-imagen:hover{
+        width: 210px;
+        height: 250px;
+    }
+
+    .img-ws {
+        position: fixed;
+        width: 50px;
+        height: 40px;
+        line-height: 50px;
+        bottom: 30px;
+        /* right: 30px; */
+        z-index: 5;
+    }
+
+    .carrito-licor{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgb(233, 227, 204);
+        border-radius: 1rem;
+        margin: 20px;
+        gap: 0.5rem;
+    }
+
+    .carrito-accion{
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .acciones-derecha{
+        flex-direction: column;
+    }
+
+    .carrito-acciones-total{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .acciones-izquierda{
+        text-align: center;
+    }
+
+    .container-footer, .nombre-proyecto{
+        font-size: 1rem;
+        width: 100%;
+    }
+
+    .carrito-comprado, .carrito-vacio{
+    background-color: #ddbd48;
+    text-align: center;
+    margin: 1rem;
+    padding: 2rem;
+    color: black;
+    font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    .container-licores{
+        grid-template-columns: 1fr;
+    }
+
+    main{
+        width: auto;
+    }
+
+    .container-footer, .nombre-proyecto{
+        font-size: 1rem;
+        width: auto;
+    }
 }

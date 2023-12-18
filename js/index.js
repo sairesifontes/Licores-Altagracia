@@ -1,9 +1,19 @@
+let licores = []
+
+fetch("./js/licores.json")
+    .then(response => response.json())
+    .then(data => {
+        licores = data    
+        cargarLicoresHTML(licores)
+    })
+
 const contenedorLicores = document.querySelector(".container-licores")
 const botonesCategoria = document.querySelectorAll(".boton-categoria")
-const tituloCategorias = document.querySelector("#titulo-principal")
 let botonesAgregar = document.querySelectorAll(".licor-agregar")
 const nroCantidadCarrito = document.querySelector(".numero-carrito")
 const buscarPorNombre = document.querySelector("#buscar")
+
+
 
 
 
@@ -19,7 +29,7 @@ function cargarLicoresHTML(categoriaElegida) {
             <img class="licor-imagen" src="${licor.imagen}" alt="${licor.nombre}">
             <div class="licor-detalles">
                 <h3 class="licor-titulo">${licor.nombre}</h3>
-                <p class="licor-precio">$${licor.precio}</p>
+                <p class="licor-precio">$ ${licor.precio}</p>
                 <button class="licor-agregar" id="${licor.codigo}">Agregar</button>
             </div>    
         `;
@@ -29,7 +39,6 @@ function cargarLicoresHTML(categoriaElegida) {
 }
 
 
-cargarLicoresHTML(licores)
 
 botonesCategoria.forEach(boton => {
     boton.addEventListener("click", (e) => {
@@ -37,27 +46,24 @@ botonesCategoria.forEach(boton => {
         botonesCategoria.forEach(boton => boton.classList.remove("active"))
         e.currentTarget.classList.add("active")
         
-        
         if(e.currentTarget.id === "todos"){
             cargarLicoresHTML(licores)
-            tituloCategorias.innerText = "TODOS LOS PRODUCTOS"
         }else{
             const licoresCategoria = licores.filter(licor => licor.categoria === e.currentTarget.id);
             cargarLicoresHTML(licoresCategoria)
-
-            const textoCategoria = licores.find(licor => licor.categoria === e.currentTarget.id);
-            
-            tituloCategorias.innerText = textoCategoria.categoria.toUpperCase()
         }
     })
 })
 
 
-buscarPorNombre.addEventListener("input", ()=> {
-    let buscar = buscarPorNombre.value.trim().toLowerCase()
-    let licoresRestantes = licores.filter((licor) => licor.nombre.toLowerCase().includes(buscar))
-    cargarLicoresHTML(licoresRestantes)
-})
+buscarPorNombre.addEventListener("input", () => {
+    let buscar = buscarPorNombre.value.trim().toLowerCase();
+    let licoresRestantes = licores.filter((licor) => {
+        return licor.nombre && licor.nombre.toLowerCase().includes(buscar);
+    });
+    cargarLicoresHTML(licoresRestantes);
+});
+
 
 
 function actBotonAgregar() {
@@ -70,9 +76,21 @@ function actBotonAgregar() {
 }
 
 
-const licoresEnCarrito = []
+let licoresEnCarrito = []
+
+let licoresEnCarritoLS = localStorage.getItem("mi-carrito")
+
+if(licoresEnCarritoLS){
+    licoresEnCarrito = JSON.parse(licoresEnCarritoLS)
+    actualizaNroCarrito()
+}else{
+    licoresEnCarrito = []
+}
+
+
 
 function agregarAlCarrito(e){
+
     const idBoton = e.currentTarget.id
     const licorAgregado = licores.find(licor => licor.codigo === parseInt(idBoton))
 
@@ -85,8 +103,29 @@ function agregarAlCarrito(e){
     }
 
     actualizaNroCarrito()
+
     localStorage.setItem("mi-carrito", JSON.stringify(licoresEnCarrito))
+
+
+    Toastify({
+        text: `Se agregó ${licorAgregado.nombre} al carrito🍺.`,
+        duration: 3000,
+        gravity: "bottom",
+        position: "right",
+        stopOnFocus: true,
+        style: {
+            background: "linear-gradient(to right, #ddbd48, #96c93d)",
+            borderRadius: '2rem',
+            fontSize: '1.2rem'
+        },
+        offset: {
+            x: '1.5rem', 
+            y: '5rem' 
+        },
+        onClick: function(){} 
+    }).showToast();
 }
+
 
 function actualizaNroCarrito(){
     let nro = licoresEnCarrito.reduce((acc,licor) => acc + licor.cantidad, 0)
